@@ -1,0 +1,4 @@
+{
+  "role-name" : "twitter-data-role",
+  "role" : [ "rest-writer" ]
+}

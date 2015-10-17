@@ -1,0 +1,19 @@
+<options xmlns='http://marklogic.com/appservices/search'>
+  <search-option>unfiltered</search-option>
+  <quality-weight>0</quality-weight>
+  <constraint name="object-type">
+    <range type="xs:string" facet="true">
+      <element ns="" name="objectType" />
+    </range>
+  </constraint>
+  <constraint name="region">
+    <range type="xs:string" facet="true">
+      <element ns="" name="region" />
+    </range>
+  </constraint>
+  <constraint name="platform">
+    <range type="xs:string" facet="true">
+      <element ns="" name="platform" />
+    </range>
+  </constraint>
+</options>
