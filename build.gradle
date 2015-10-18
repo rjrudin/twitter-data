@@ -35,13 +35,18 @@ task downloadTweets {
     }
 }
 
-task importTweets(type: com.rjrudin.marklogic.gradle.task.MlcpTask, dependsOn: downloadTweets) {
+task importTweets(type: com.rjrudin.marklogic.gradle.task.MlcpTask) {
+    dependsOn = ["downloadTweets", "mlLoadModules"]
     classpath = configurations.mlcp
     command = "IMPORT"
+    port = Integer.parseInt(mlRestPort)
     database = mlAppConfig.contentDatabaseName
     input_file_path = "build/tweets.zip"
     input_compressed = "true"
     output_collections = "tweets"
     output_permissions = "rest-reader,read,rest-writer,update"
     output_uri_replace = ".*tweets.zip,''"
+    thread_count = 16
+    transform_module = "/ext/mlcp/tweet-transform.xqy"
+    transform_namespace = "urn:sample:transform"
 }

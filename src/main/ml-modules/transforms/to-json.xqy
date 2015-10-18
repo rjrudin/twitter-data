@@ -1,8 +1,8 @@
 xquery version "1.0-ml";
 
-module namespace transform = "http://marklogic.com/rest-api/transform/xto-json";
+module namespace transform = "http://marklogic.com/rest-api/transform/to-json";
 
-import module namespace json="http://marklogic.com/xdmp/json" at "/MarkLogic/json/json.xqy";
+import module namespace json = "http://marklogic.com/xdmp/json" at "/MarkLogic/json/json.xqy";
 
 declare namespace jb = "http://marklogic.com/xdmp/json/basic";
 
