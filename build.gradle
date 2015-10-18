@@ -26,9 +26,12 @@ dependencies {
 }
 
 task downloadTweets {
-    def f = new File('build/tweets.zip')
-    if (!f.exists()) {
-        new URL(tweetsZipUrl).withInputStream{ i -> f.withOutputStream{ it << i }}
+    doLast {
+        new File("build").mkdir()
+        def f = new File('build/tweets.zip')
+        if (f == null || !f.exists()) {
+            new URL(tweetsZipUrl).withInputStream{ i -> f.withOutputStream{ it << i }}
+        }
     }
 }
 
