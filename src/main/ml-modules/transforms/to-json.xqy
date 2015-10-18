@@ -6,7 +6,7 @@ import module namespace json = "http://marklogic.com/xdmp/json" at "/MarkLogic/j
 
 declare namespace jb = "http://marklogic.com/xdmp/json/basic";
 
-declare variable $ARRAY-ELEMENT-NAMES := ("urls", "indices", "user_mentions", "hashtags");
+declare variable $ARRAY-ELEMENT-NAMES := ("urls", "indices", "links", "user_mentions", "hashtags");
 
 (:
 Example of a transform for /v1/documents that converts XML into MarkLogic's "basic JSON"
