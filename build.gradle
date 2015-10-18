@@ -25,13 +25,20 @@ dependencies {
     mlcp "com.marklogic:marklogic-mapreduce2:2.1.3"
 }
 
-task importTweets(type: com.rjrudin.marklogic.gradle.task.MlcpTask) {
+task downloadTweets {
+    def f = new File('build/tweets.zip')
+    if (!f.exists()) {
+        new URL(tweetsZipUrl).withInputStream{ i -> f.withOutputStream{ it << i }}
+    }
+}
+
+task importTweets(type: com.rjrudin.marklogic.gradle.task.MlcpTask, dependsOn: downloadTweets) {
     classpath = configurations.mlcp
     command = "IMPORT"
     database = mlAppConfig.contentDatabaseName
-    input_file_path = tweetsPath
+    input_file_path = "build/tweets.zip"
     input_compressed = "true"
     output_collections = "tweets"
     output_permissions = "rest-reader,read,rest-writer,update"
-    //output_uri_replace = ".*import,'/import'"
+    output_uri_replace = ".*tweets.zip,''"
 }
