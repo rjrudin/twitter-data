@@ -1,13 +1,7 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {url "http://developer.marklogic.com/maven2/"}
-        maven {url "http://rjrudin.github.io/marklogic-java/releases"}
-    }
-    dependencies { classpath mlGradleDependency }
+plugins {
+    id "com.marklogic.ml-gradle" version "2.7.0"
+    id "com.github.jk1.dependency-license-report" version "0.3.11"
 }
-
-apply plugin: 'ml-gradle'
 
 repositories {
     mavenCentral()
@@ -35,7 +29,7 @@ task downloadTweets {
     }
 }
 
-task importTweets(type: com.rjrudin.marklogic.gradle.task.MlcpTask) {
+task importTweets(type: com.marklogic.gradle.task.MlcpTask) {
     dependsOn = ["downloadTweets", "mlLoadModules"]
     classpath = configurations.mlcp
     command = "IMPORT"

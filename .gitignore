@@ -6,3 +6,5 @@ build/
 /.gradle
 /.settings
 /.project
+*.iml
+.idea
